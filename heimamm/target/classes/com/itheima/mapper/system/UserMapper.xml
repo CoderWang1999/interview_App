@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射配置文件：配置statement对象-->
+<mapper namespace="com.itheima.mapper.system.UserMapper">
+    <resultMap id="UserMapper" type="User">
+        <id column="user_id" property="id"/>
+        <result column="email" property="email"/>
+        <result column="user_name" property="userName"/>
+        <result column="gender" property="gender"/>
+        <result column="state" property="state"/>
+        <result column="dept_id" property="deptId"/>
+        <result column="password" property="password"/>
+        <result column="telephone" property="telephone"/>
+        <result column="birthday" property="birthday"/>
+        <result column="join_date" property="joinDate"/>
+        <association property="dept" javaType="Dept">
+            <result column="dept_name" property="deptName"/>
+        </association>
+    </resultMap>
+    <!--遍历所有-->
+    <select id="findAll" resultMap="UserMapper">
+           SELECT * FROM ss_user
+ </select>
+
+    <!--新增-->
+    <insert id="insert" parameterType="user">
+         INSERT INTO ss_user
+           (user_id,email,user_name,password,state,gender,telephone,birthday,join_date,dept_id)
+             VALUES(#{id},#{email},#{userName},#{password},#{state},#{gender},#{telephone},#{birthday},#{joinDate},#{deptId})
+    </insert>
+
+    <!--批量删除-->
+    <delete id="deleteByids" parameterType="list">
+        DELETE FROM ss_user
+        <where>
+            <foreach collection="array" item="id" separator="," open="user_id in (" close=")">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+
+    <!--根据id查询-->
+    <select id="findById" parameterType="string" resultMap="UserMapper">
+        SELECT * FROM ss_user where user_id=#{id}
+    </select>
+    <!--修改-->
+    <update id="update" parameterType="user">
+        update ss_user set email=#{email},user_name=#{userName},password=#{password},state=#{state},gender=#{gender},telephone=#{telephone},birthday=#{birthday},join_date=#{joinDate},dept_id=#{deptId}
+
+        where user_id=#{id}
+    </update>
+</mapper>

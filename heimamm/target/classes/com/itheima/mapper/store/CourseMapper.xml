@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射配置文件：配置statement对象-->
+<mapper namespace="com.itheima.mapper.store.CourseMapper">
+    <!--遍历-->
+    <select id="findAll" resultType="Course">
+         SELECT * FROM st_course
+    </select>
+
+    <!--新增-->
+    <insert id="save" parameterType="Course">
+       insert into st_course (id, name,
+        remark, state, create_time)
+        values
+        (#{id}, #{name}, #{remark},
+        #{state}, #{createTime})
+    </insert>
+
+    <!--根据id查询-->
+    <select id="findByid" parameterType="string" resultType="Course">
+        select * from st_course where id=#{id}
+    </select>
+
+    <!--修改-->
+    <update id="update" parameterType="Course">
+         update st_course set
+        id=#{id}, name=#{name},
+        remark=#{remark}, state=#{state}, create_time=#{createTime}
+        where id=#{id}
+    </update>
+
+    <!--删除-->
+    <delete id="deleteByIds" parameterType="list">
+        delete from st_course
+        <where>
+            <foreach collection="array" open="id in (" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+</mapper>
