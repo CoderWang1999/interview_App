@@ -19,4 +19,7 @@ public interface CatalogService {
 
     //批量删除
     boolean deleteByIds(String ids);
+
+    List<Catalog> list();
+
 }

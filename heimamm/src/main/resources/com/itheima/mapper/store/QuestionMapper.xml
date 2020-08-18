@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射配置文件：配置statement对象-->
+<mapper namespace="com.itheima.mapper.store.QuestionMapper">
+    <!--遍历-->
+    <resultMap id="questionMapper" type="Question">
+        <id column="id" property="id"/>
+        <result column="company_id" property="companyId"/>
+        <result column="catalog_id" property="catalogId"/>
+        <result column="remark" property="remark"/>
+        <result column="subject" property="subject"/>
+        <result column="analysis" property="analysis"/>
+        <result column="type" property="type"/>
+        <result column="difficulty" property="difficulty"/>
+        <result column="is_classic" property="isClassic"/>
+        <result column="state" property="state"/>
+        <result column="review_status" property="reviewStatus"/>
+        <result column="create_time" property="createTime"/>
+
+        <association property="catalog" javaType="Catalog" column="catalog_id" select="com.itheima.mapper.store.CatalogMapper.findByid"/>
+        <association property="company" javaType="Company" column="company_id" select="com.itheima.mapper.store.CompanyMapper.findByid"/>
+    </resultMap>
+    <select id="findAll" resultMap="questionMapper">
+         SELECT * FROM st_question order by create_time desc
+    </select>
+
+    <!--新增-->
+    <insert id="save" parameterType="Question">
+       insert into st_question (id, company_id, catalog_id,
+        remark, subject, analysis,
+        type, difficulty, is_classic,
+        state, review_status,
+        create_time)
+        values
+        (#{id}, #{companyId}, #{catalogId},
+        #{remark}, #{subject}, #{analysis},
+        #{type}, #{difficulty}, #{isClassic},
+        #{state}, #{reviewStatus},
+        #{createTime})
+    </insert>
+
+    <!--根据id查询-->
+    <select id="findByid" parameterType="string" resultType="Question">
+        select * from st_question where id=#{id}
+    </select>
+
+    <!--修改-->
+    <update id="update" parameterType="Question">
+         update st_question set
+        id=#{id}, company_id=#{companyId},
+        catalog_id=#{catalogId}, remark=#{remark}, subject=#{subject},
+        analysis=#{analysis},type=#{type}, difficulty=#{difficulty},
+        is_classic=#{isClassic}, state=#{state},review_status=#{reviewStatus},
+        create_time=#{createTime}
+        where id=#{id}
+    </update>
+
+    <!--删除-->
+    <delete id="deleteByIds" parameterType="list">
+        delete from st_question
+        <where>
+            <foreach collection="array" open="id in (" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+</mapper>

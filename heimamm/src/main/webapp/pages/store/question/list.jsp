@@ -18,10 +18,10 @@
 </head>
 <script>
     function deleteById() {
-        let ids = getCheckId()
+        let ids = getCheckId();
         if(ids) {
             if(confirm("你确认要删除此条记录吗？")) {
-                location.href="${ctx}/store/question?operation=delete?ids="+ids;
+                location.href="${ctx}/store/Question/deleteByIds?ids="+ids;
             }
         }else{
             alert("请勾选待处理的记录，且每次最少勾选一个")
@@ -59,7 +59,7 @@
                 <div class="pull-left">
                     <div class="form-group form-inline">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default" title="新建" onclick='location.href="${ctx}/store/question?operation=toAdd"'><i class="fa fa-file-o"></i> 新建</button>
+                            <button type="button" class="btn btn-default" title="新建" onclick='location.href="${ctx}/store/Catalog/toAdd"'><i class="fa fa-file-o"></i> 新建</button>
                             <button type="button" class="btn btn-default" title="删除" onclick='deleteById()'><i class="fa fa-trash-o"></i> 删除</button>
                             <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
 <%--
@@ -124,8 +124,8 @@
                             </c:choose>
                         </td>
                         <th class="text-center">
-                            <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/question?operation=toEdit&id=${o.id}"'>编辑</button>
-                            <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/question?operation=toExamine&id=${o.id}"'>审核</button>
+                            <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/Catalog/toUpdate?id=${o.id}"'>编辑</button>
+                            <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/Catalog/toExamine?id=${o.id}"'>审核</button>
                         </th>
                     </tr>
                     </c:forEach>

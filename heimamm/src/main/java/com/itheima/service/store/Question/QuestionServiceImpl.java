@@ -1,25 +1,25 @@
-package com.itheima.service.store.catalog;
+package com.itheima.service.store.Question;
 
 import com.github.pagehelper.PageHelper;
-import com.itheima.domain.store.Catalog;
-import com.itheima.mapper.store.CatalogMapper;
-import com.itheima.service.store.catalog.CatalogService;
+import com.itheima.domain.store.Question;
+import com.itheima.mapper.store.QuestionMapper;
+import com.itheima.service.store.Question.QuestionService;
 import com.itheima.utils.MapperUtils;
 import com.mysql.jdbc.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
-public class CatalogServiceImpl implements CatalogService {
+public class QuestionServiceImpl implements QuestionService {
     //遍历所有
     @Override
-    public List<Catalog> findAll(String pageNum, String pageSize) {
+    public List<Question> findAll(String pageNum, String pageSize) {
         SqlSession session =null;
         try {
             //获取session对象
             session = MapperUtils.getsession();
             //获取代理对象
-            CatalogMapper mapper = session.getMapper(CatalogMapper.class);
+            QuestionMapper mapper = session.getMapper(QuestionMapper.class);
             //对获取的当前页码和每页显示条目数进行处理
             //默认当前页为1
             int pn=1;
@@ -34,7 +34,7 @@ public class CatalogServiceImpl implements CatalogService {
             //设置分页参数
             PageHelper.startPage(pn,ps);
             //执行Sql语句
-            List<Catalog> list = mapper.findAll();
+            List<Question> list = mapper.findAll();
             //返回结果
             return list;
         }catch (Exception e) {
@@ -47,40 +47,40 @@ public class CatalogServiceImpl implements CatalogService {
 
     //新增
     @Override
-    public void save(Catalog catalog) {
+    public void save(Question Question) {
         //获取session对象
         SqlSession session = MapperUtils.getsession();
         //获取代理对象
-        CatalogMapper mapper = session.getMapper(CatalogMapper.class);
+        QuestionMapper mapper = session.getMapper(QuestionMapper.class);
         //执行sql语句
-        mapper.save(catalog);
+        mapper.save(Question);
         //提交事务并释放资源
         MapperUtils.close(session);
     }
 
     //根据id查询
     @Override
-    public Catalog findByid(String id) {
+    public Question findByid(String id) {
         //获取session对象
         SqlSession session = MapperUtils.getsession();
         //获取代理对象
-        CatalogMapper mapper = session.getMapper(CatalogMapper.class);
+        QuestionMapper mapper = session.getMapper(QuestionMapper.class);
         //执行sql语句
-        Catalog catalog = mapper.findByid(id);
+        Question Question = mapper.findByid(id);
         //提交事务并释放资源
         MapperUtils.close(session);
-        return catalog;
+        return Question;
     }
 
     //更新
     @Override
-    public void update(Catalog catalog) {
+    public void update(Question Question) {
         //获取session对象
         SqlSession session = MapperUtils.getsession();
         //获取代理对象
-        CatalogMapper mapper = session.getMapper(CatalogMapper.class);
+        QuestionMapper mapper = session.getMapper(QuestionMapper.class);
         //执行sql语句
-        mapper.update(catalog);
+        mapper.update(Question);
         //提交事务并释放资源
         MapperUtils.close(session);
     }
@@ -94,7 +94,7 @@ public class CatalogServiceImpl implements CatalogService {
             //获取session对象
             session = MapperUtils.getsession();
             //获取代理对象
-            CatalogMapper mapper = session.getMapper(CatalogMapper.class);
+            QuestionMapper mapper = session.getMapper(QuestionMapper.class);
             //将ids转成int类型的数组
             String[] split = ids.split(",");
             //执行sql语句
@@ -108,19 +108,5 @@ public class CatalogServiceImpl implements CatalogService {
             MapperUtils.close(session);
         }
         return flag;
-    }
-
-    @Override
-    public List<Catalog> list() {
-        //获取session对象
-        SqlSession session = MapperUtils.getsession();
-        //获取代理对象
-        CatalogMapper mapper = session.getMapper(CatalogMapper.class);
-        //执行sql语句
-        List<Catalog> list = mapper.findAll();
-        //提交事务并释放资源
-        MapperUtils.close(session);
-        //返回结果
-        return list;
     }
 }
