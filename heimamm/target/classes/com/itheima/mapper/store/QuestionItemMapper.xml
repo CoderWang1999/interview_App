@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射配置文件：配置statement对象-->
+<mapper namespace="com.itheima.mapper.store.QuestionItemMapper">
+    <!--遍历-->
+    <resultMap id="Mapper" type="QuestionItem">
+        <id column="id" property="id"/>
+        <result column="question_id" property="questionId"/>
+        <result column="content" property="content"/>
+        <result column="img_url" property="picture"/>
+        <result column="is_right" property="isRight"/>
+    </resultMap>
+    <select id="findAll" parameterType="string" resultMap="Mapper">
+         SELECT * FROM st_question_item where question_id=#{questionId}
+    </select>
+
+    <!--新增-->
+    <insert id="save" parameterType="QuestionItem">
+       insert into st_question_item (id, question_id, content,
+        img_url, is_right)
+        values
+        (#{id}, #{questionId}, #{content},
+        #{picture}, #{isRight})
+    </insert>
+
+    <!--根据id查询-->
+    <select id="findByid" parameterType="string" resultMap="Mapper">
+        select * from st_question_item where id=#{id}
+    </select>
+
+    <!--修改-->
+    <update id="update" parameterType="QuestionItem">
+         update st_question_item set
+        id=#{id}, question_id=#{questionId},
+        content=#{content}, img_url=#{picture}, is_right=#{isRight}
+        where id=#{id}
+    </update>
+
+    <!--删除-->
+    <delete id="deleteByIds" parameterType="list">
+        delete from st_question_item
+        <where>
+            <foreach collection="array" open="id in (" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+</mapper>
