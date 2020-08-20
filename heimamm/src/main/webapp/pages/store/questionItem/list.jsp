@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ include file="../../base.jsp"%>
+<%@ include file="../../base.jsp" %>
 <!DOCTYPE html>
 <html>
 
@@ -19,9 +19,9 @@
 
     <script type="text/javascript">
         function deleteById(id) {
-            var questionId = '${questionId}';
-            if(confirm("你确认要删除此条记录吗？")) {
-                window.location.href="${ctx}/store/questionItem?operation=delete&id="+id;
+            let questionId = '${questionId}';
+            if (confirm("你确认要删除此条记录吗？")) {
+                window.location.href = "${ctx}/store/questionItem/deleteByIds?questionId=${questionId}&ids=" + id;
             }
         }
     </script>
@@ -48,25 +48,27 @@
         <!--订单信息-->
         <div class="panel panel-default">
             <div class="panel-heading">新增选项</div>
-            <form id="editForm" action="${ctx}/store/questionItem?operation=save" method="post">
+            <form id="editForm" action="${ctx}/store/questionItem/saveOrUpdate" method="post">
+                <input type="hidden" name="questionId" value="${questionId}">
+                <input type="hidden" name="id" value="${questionItem.id}">
                 <div class="row data-type" style="margin: 0px">
 
                     <div class="col-md-2 title">选项内容</div>
                     <div class="col-md-4 data">
-                        <input type="text" class="form-control" placeholder="选项内容" name="content">
+                        <input type="text" class="form-control" placeholder="选项内容" name="content" value="${questionItem.content}">
                     </div>
 
                     <div class="col-md-2 title">选项图片</div>
                     <div class="col-md-4 data">
-                        <input type="file" class="form-control" placeholder="请选择" name="picture" >
+                        <input type="file" class="form-control" placeholder="请选择" name="picture">
                     </div>
 
                     <div class="col-md-2 title">是否正确答案</div>
                     <div class="col-md-4 data">
                         <select class="form-control" name="isRight">
                             <option value="">请选择</option>
-                            <option value="1">正确答案</option>
-                            <option value="0">错误选项</option>
+                            <option value="1" ${questionItem.isRight eq "1" ? "selected" : ""}>正确答案</option>
+                            <option value="0" ${questionItem.isRight eq "0" ? "selected" : ""}>错误选项</option>
                         </select>
                     </div>
 
@@ -87,7 +89,8 @@
 
         <!--工具栏-->
         <div class="box-tools text-center">
-            <button type="button" onclick='document.getElementById("editForm").submit()' class="btn bg-maroon">保存</button>
+            <button type="button" onclick='document.getElementById("editForm").submit()' class="btn bg-maroon">保存
+            </button>
             <button type="button" class="btn bg-default" onclick="history.back(-1);">返回</button>
         </div>
         <!--工具栏/-->
@@ -112,9 +115,9 @@
                     <div class="pull-left">
                         <div class="form-group form-inline">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default" title="新建" onclick='location.href="${ctx}/store/questionItem?operation=toAdd"'><i class="fa fa-file-o"></i> 新建</button>
-                                <button type="button" class="btn btn-default" title="删除" onclick='deleteById()'><i class="fa fa-trash-o"></i> 删除</button>
-                                <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+                                <button type="button" class="btn btn-default" title="刷新"
+                                        onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -135,14 +138,19 @@
                             <td class="tableHeader">操作</td>
                         </tr>
                         </thead>
-                        <tbody class="tableBody" >
-                        <c:forEach items="${page.list}" var="o" varStatus="status">
-                            <tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
+                        <tbody class="tableBody">
+                        <c:forEach items="${list}" var="o" varStatus="status">
+                            <tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'">
                                 <td>${o.content}</td>
-                                <td>${o.isRight eq "1" ? "正确答案" : ""}</td>
+                                <td>${o.isRight eq "1" ? "正确答案" : "错误答案"}</td>
                                 <td>
-                                    <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/questionItem?operation=toEdit&id=${o.id}"'>编辑</button>
-                                    <button type="button" class="btn bg-olive btn-xs" onclick="deleteById('${o.id}')">删除</button>
+                                    <button type="button" class="btn bg-olive btn-xs"
+                                            onclick='location.href="${ctx}/store/questionItem/toUpdate?questionId=${questionId}&id=${o.id}"'>
+                                        编辑
+                                    </button>
+                                    <button type="button" class="btn bg-olive btn-xs" onclick="deleteById('${o.id}')">
+                                        删除
+                                    </button>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -152,12 +160,6 @@
                     <!--工具栏/-->
                 </div>
                 <!-- 数据表格 /-->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-                <jsp:include page="../../common/page.jsp">
-                    <jsp:param value="${ctx}/store/question?operation=list" name="pageUrl"/>
-                </jsp:include>
             </div>
         </div>
 

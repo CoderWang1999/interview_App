@@ -86,7 +86,7 @@
                         </a>
                     </li>
                     <li id="question-examine-manager">
-                        <a href="${ctx}/store/examineLog?operation=list" onclick="setSidebarActive(this)"
+                        <a href="${ctx}/store/questionItem/findAll" onclick="setSidebarActive(this)"
                            target="iframe">
                             <i class="fa fa-circle-o"></i>题目审核日志管理
                         </a>

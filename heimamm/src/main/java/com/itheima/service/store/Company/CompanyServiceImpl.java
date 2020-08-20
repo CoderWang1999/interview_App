@@ -3,7 +3,6 @@ package com.itheima.service.store.Company;
 import com.github.pagehelper.PageHelper;
 import com.itheima.domain.store.Company;
 import com.itheima.mapper.store.CompanyMapper;
-import com.itheima.service.store.Company.CompanyService;
 import com.itheima.utils.MapperUtils;
 import com.mysql.jdbc.StringUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -43,6 +42,21 @@ public class CompanyServiceImpl implements CompanyService {
             //提交事务并释放资源
             MapperUtils.close(session);
         }
+    }
+
+    //不带分页的遍历
+    @Override
+    public List<Company> list() {
+        //获取session对象
+        SqlSession session = MapperUtils.getsession();
+        //获取代理对象
+        CompanyMapper mapper = session.getMapper(CompanyMapper.class);
+        //执行sql语句
+        List<Company> list = mapper.findAll();
+        //提交事务并释放资源
+        MapperUtils.close(session);
+        //返回结果
+        return list;
     }
 
     //新增

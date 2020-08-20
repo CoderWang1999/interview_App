@@ -9,10 +9,15 @@ import com.itheima.service.store.Question.QuestionService;
 import com.itheima.service.store.Question.QuestionServiceImpl;
 import com.itheima.service.store.catalog.CatalogService;
 import com.itheima.service.store.catalog.CatalogServiceImpl;
+import com.itheima.service.store.questionItem.QuestionItemService;
+import com.itheima.service.store.questionItem.QuestionItemServiceImpl;
 import com.itheima.service.system.User.UserService;
 import com.itheima.service.system.User.UserServiceImpl;
 import com.itheima.service.system.dept.DeptService;
 import com.itheima.service.system.dept.DeptServiceImpl;
+import com.itheima.service.system.role.RoleService;
+import com.itheima.service.system.role.RoleServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +36,8 @@ public class BaseServlet extends HttpServlet {
     public CourseService courseService;
     public CatalogService catalogService;
     public QuestionService questionService;
+    public QuestionItemService questionItemService;
+    public RoleService roleService;
     @Override
     public void init() throws ServletException {
         companyService=new CompanyServiceImpl();
@@ -40,6 +47,8 @@ public class BaseServlet extends HttpServlet {
         courseService=new CourseServiceImpl();
         catalogService=new CatalogServiceImpl();
         questionService=new QuestionServiceImpl();
+        questionItemService=new QuestionItemServiceImpl();
+        roleService = new RoleServiceImpl();
     }
 
     //根据url执行方法

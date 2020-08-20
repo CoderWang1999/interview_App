@@ -2,6 +2,8 @@ package com.itheima.service.store.Question;
 
 import com.itheima.domain.store.Question;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 public interface QuestionService {
@@ -20,4 +22,5 @@ public interface QuestionService {
     //批量删除
     boolean deleteByIds(String ids);
 
+    ByteArrayOutputStream getReport() throws IOException;
 }

@@ -59,13 +59,13 @@
                 <div class="pull-left">
                     <div class="form-group form-inline">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default" title="新建" onclick='location.href="${ctx}/store/Catalog/toAdd"'><i class="fa fa-file-o"></i> 新建</button>
+                            <button type="button" class="btn btn-default" title="新建" onclick='location.href="${ctx}/store/Question/toAdd"'><i class="fa fa-file-o"></i> 新建</button>
                             <button type="button" class="btn btn-default" title="删除" onclick='deleteById()'><i class="fa fa-trash-o"></i> 删除</button>
                             <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
 <%--
                             <button type="button" class="btn btn-default" title="上传题目" onclick='location.href="${ctx}/store/question?operation=toImport"'><i class="fa fa-adn"></i> 上传题目</button>
 --%>
-                            <button type="button" class="btn btn-default" title="导出题目" onclick=location.href="${ctx}/store/question?operation=toExport"> <i class="fa fa-download"></i>导出题目</button>
+                            <button type="button" class="btn btn-default" title="导出题目" onclick=location.href="${ctx}/store/Question/downloadReport"> <i class="fa fa-download"></i>导出题目</button>
                         </div>
                     </div>
                 </div>
@@ -124,8 +124,9 @@
                             </c:choose>
                         </td>
                         <th class="text-center">
-                            <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/Catalog/toUpdate?id=${o.id}"'>编辑</button>
+                            <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/Question/toUpdate?id=${o.id}"'>编辑</button>
                             <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/Catalog/toExamine?id=${o.id}"'>审核</button>
+                            <button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/store/questionItem/findAll?questionId=${o.id}"'>配置选项</button>
                         </th>
                     </tr>
                     </c:forEach>

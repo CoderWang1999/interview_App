@@ -1,8 +1,11 @@
+D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\domain\store\QuestionItem.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\service\store\Course\CourseService.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\mapper\store\CourseMapper.java
+D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\service\store\questionItem\QuestionItemService.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\domain\store\Catalog.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\domain\store\Company.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\service\store\Question\QuestionService.java
+D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\service\store\questionItem\QuestionItemServiceImpl.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\service\store\Question\QuestionServiceImpl.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\utils\MapperUtils.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\mapper\store\CatalogMapper.java
@@ -13,6 +16,7 @@ D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\controller\system\U
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\domain\store\Course.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\domain\store\Question.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\mapper\system\UserMapper.java
+D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\mapper\store\QuestionItemMapper.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\service\store\catalog\CatalogService.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\domain\system\Dept.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\service\system\dept\DeptService.java
@@ -21,6 +25,7 @@ D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\controller\store\Co
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\service\system\User\UserService.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\service\store\Company\CompanyServiceImpl.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\service\system\dept\DeptServiceImpl.java
+D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\controller\store\QuestionItemServlet.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\controller\system\DeptServlet.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\filters\CharacterEncodingFilter.java
 D:\IDE\Idea_space\Heima_mm\heimamm\src\main\java\com\itheima\controller\store\CompanyServlet.java

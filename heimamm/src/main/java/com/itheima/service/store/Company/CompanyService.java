@@ -8,6 +8,9 @@ public interface CompanyService {
     //查询所有
     List<Company> findAll(String pageNum, String pageSize);
 
+    //不带分页的遍历
+    List<Company> list();
+
     //新增
     void save(Company company);
 

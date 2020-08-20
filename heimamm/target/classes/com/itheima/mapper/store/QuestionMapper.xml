@@ -16,6 +16,7 @@
         <result column="state" property="state"/>
         <result column="review_status" property="reviewStatus"/>
         <result column="create_time" property="createTime"/>
+        <result column="picture" property="picture"/>
 
         <association property="catalog" javaType="Catalog" column="catalog_id" select="com.itheima.mapper.store.CatalogMapper.findByid"/>
         <association property="company" javaType="Company" column="company_id" select="com.itheima.mapper.store.CompanyMapper.findByid"/>
@@ -30,17 +31,17 @@
         remark, subject, analysis,
         type, difficulty, is_classic,
         state, review_status,
-        create_time)
+        create_time,picture)
         values
         (#{id}, #{companyId}, #{catalogId},
         #{remark}, #{subject}, #{analysis},
         #{type}, #{difficulty}, #{isClassic},
         #{state}, #{reviewStatus},
-        #{createTime})
+        #{createTime},#{picture})
     </insert>
 
     <!--根据id查询-->
-    <select id="findByid" parameterType="string" resultType="Question">
+    <select id="findByid" parameterType="string" resultMap="questionMapper">
         select * from st_question where id=#{id}
     </select>
 
@@ -51,7 +52,7 @@
         catalog_id=#{catalogId}, remark=#{remark}, subject=#{subject},
         analysis=#{analysis},type=#{type}, difficulty=#{difficulty},
         is_classic=#{isClassic}, state=#{state},review_status=#{reviewStatus},
-        create_time=#{createTime}
+        create_time=#{createTime},picture=#{picture}
         where id=#{id}
     </update>
 
