@@ -1,5 +1,4 @@
 com\itheima\domain\store\Company.class
-com\itheima\controller\store\RoleServlet.class
 com\itheima\service\system\role\RoleService.class
 com\itheima\service\system\User\UserService.class
 com\itheima\mapper\system\RoleMapper.class
@@ -8,6 +7,7 @@ com\itheima\controller\system\DeptServlet.class
 com\itheima\domain\store\Question.class
 com\itheima\service\system\dept\DeptService.class
 com\itheima\controller\store\CompanyServlet.class
+com\itheima\service\system\module\ModuleService.class
 com\itheima\service\system\role\RoleServiceImpl.class
 com\itheima\service\store\catalog\CatalogServiceImpl.class
 com\itheima\utils\UidUtil.class
@@ -18,6 +18,7 @@ com\itheima\utils\BeanUtil.class
 com\itheima\service\system\dept\DeptServiceImpl.class
 com\itheima\mapper\store\CourseMapper.class
 com\itheima\service\store\Course\CourseService.class
+com\itheima\controller\system\RoleServlet.class
 com\itheima\controller\store\QuestionItemServlet.class
 com\itheima\mapper\store\QuestionItemMapper.class
 com\itheima\mapper\system\UserMapper.class
@@ -34,10 +35,14 @@ com\itheima\controller\BaseServlet.class
 com\itheima\domain\system\User.class
 com\itheima\mapper\system\DeptMapper.class
 com\itheima\utils\MapperUtils.class
+com\itheima\service\system\module\ModuleServiceImpl.class
+com\itheima\domain\system\Module.class
 com\itheima\service\store\Company\CompanyService.class
 com\itheima\controller\store\QuestionServlet.class
+com\itheima\controller\system\ModuleServlet.class
 com\itheima\controller\store\CourseServlet.class
 com\itheima\service\store\Question\QuestionService.class
+com\itheima\mapper\system\ModuleMapper.class
 com\itheima\service\store\catalog\CatalogService.class
 com\itheima\controller\store\CatalogServlet.class
 com\itheima\controller\system\UserServlet.class

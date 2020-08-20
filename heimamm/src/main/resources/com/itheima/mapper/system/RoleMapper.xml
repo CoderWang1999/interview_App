@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射配置文件：配置statement对象-->
+<mapper namespace="com.itheima.mapper.system.RoleMapper">
+
+    <!--遍历所有-->
+    <resultMap id="roleMap" type="Role">
+        <id column="role_id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="remark" property="remark"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+    <select id="findAll" resultMap="roleMap">
+        select *  from ss_role
+    </select>
+
+    <!--新增-->
+    <insert id="insert" parameterType="Role">
+        INSERT INTO ss_role (role_id,name,remark,create_time) VALUES(#{id},#{name},#{remark},#{createTime})
+    </insert>
+
+    <!--批量删除-->
+    <delete id="deleteByids" parameterType="list">
+        DELETE FROM ss_role
+        <where>
+            <foreach collection="array" item="id" separator="," open="role_id in (" close=")">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+    <!--根据id查询-->
+    <select id="findById" parameterType="string" resultMap="roleMap">
+        select *  from ss_role where role_id=#{id}
+    </select>
+    <!--修改-->
+    <update id="update" parameterType="Role">
+        update ss_role set role_id=#{id},name=#{name},remark=#{remark},create_time=#{createTime}
+        where role_id=#{id}
+    </update>
+</mapper>

@@ -27,5 +27,5 @@
 <link rel="stylesheet" href="${ctx}/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.css">
 <link rel="stylesheet" href="${ctx}/plugins/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="${ctx}/css/style.css">
-<script src="${ctx}/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="${ctx}/plugins/common.js"></script>
+<script src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="${pageContext.request.contextPath}/plugins/common.js"></script>

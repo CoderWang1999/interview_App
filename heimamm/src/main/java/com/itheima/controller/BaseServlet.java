@@ -15,6 +15,8 @@ import com.itheima.service.system.User.UserService;
 import com.itheima.service.system.User.UserServiceImpl;
 import com.itheima.service.system.dept.DeptService;
 import com.itheima.service.system.dept.DeptServiceImpl;
+import com.itheima.service.system.module.ModuleService;
+import com.itheima.service.system.module.ModuleServiceImpl;
 import com.itheima.service.system.role.RoleService;
 import com.itheima.service.system.role.RoleServiceImpl;
 
@@ -38,6 +40,7 @@ public class BaseServlet extends HttpServlet {
     public QuestionService questionService;
     public QuestionItemService questionItemService;
     public RoleService roleService;
+    public ModuleService moduleService;
     @Override
     public void init() throws ServletException {
         companyService=new CompanyServiceImpl();
@@ -49,6 +52,7 @@ public class BaseServlet extends HttpServlet {
         questionService=new QuestionServiceImpl();
         questionItemService=new QuestionItemServiceImpl();
         roleService = new RoleServiceImpl();
+        moduleService=new ModuleServiceImpl();
     }
 
     //根据url执行方法

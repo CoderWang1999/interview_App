@@ -38,12 +38,12 @@
                         </a>
                     </li>
                     <li id="sys-role">
-                        <a href="${ctx}/system/role?operation=list" onclick="setSidebarActive(this)" target="iframe">
+                        <a href="${ctx}/system/role/findAll" onclick="setSidebarActive(this)" target="iframe">
                             <i class="fa fa-circle-o"></i>角色管理
                         </a>
                     </li>
                     <li id="module-manager">
-                        <a href="${ctx}/system/module?operation=list" onclick="setSidebarActive(this)" target="iframe">
+                        <a href="${ctx}/system/module/findAll" onclick="setSidebarActive(this)" target="iframe">
                             <i class="fa fa-circle-o"></i>模块管理
                         </a>
                     </li>

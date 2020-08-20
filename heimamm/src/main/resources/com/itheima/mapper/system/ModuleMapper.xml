@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射配置文件：配置statement对象-->
+<mapper namespace="com.itheima.mapper.system.ModuleMapper">
+
+    <!--遍历所有-->
+    <resultMap id="moduleMap" type="Module">
+        <id column="mid" property="id"/>
+        <result column="pid" property="parentId"/>
+        <result column="mn" property="name"/>
+        <result column="mc" property="ctype"/>
+        <result column="ms" property="state"/>
+        <result column="mcurl" property="curl"/>
+        <result column="mr" property="remark"/>
+        <association property="module" javaType="Module">
+            <result column="pname" property="name"/>
+        </association>
+    </resultMap>
+    <select id="findAll" resultMap="moduleMap">
+        select
+        m.module_id mid,
+        m.parent_id pid,
+        m.name mn,
+        m.ctype mc,
+        m.state ms,
+        m.curl mcurl,
+        m.remark mr,
+        p.parent_name pname
+        from ss_module m
+        left join ss_module p
+        on m.parent_id=p.module_id
+    </select>
+
+    <!--新增-->
+    <insert id="insert" parameterType="Module">
+        INSERT INTO ss_module (module_id,parent_id,name,ctype,state,curl,remark) VALUES(#{id},#{parentId},#{name},#{ctype},#{state},#{curl},#{remark})
+    </insert>
+
+    <!--批量删除-->
+    <delete id="deleteByids" parameterType="list">
+        DELETE FROM ss_module
+        <where>
+            <foreach collection="array" item="id" separator="," open="module_id in (" close=")">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+    <!--根据id查询-->
+    <select id="findById" parameterType="string" resultMap="moduleMap">
+        select
+        m.module_id mid,
+        m.parent_id pid,
+        m.name mn,
+        m.ctype mc,
+        m.state ms,
+        m.curl mcurl,
+        m.remark mr,
+        p.parent_name pname
+        from ss_module m
+        left join ss_module p
+        on m.parent_id=p.module_id
+		WHERE m.module_id=#{id}
+    </select>
+    <!--修改-->
+    <update id="update" parameterType="Module">
+        update ss_module set module_id=#{id},parent_id=#{parentId},name=#{name},ctype=#{ctype},state=#{state},curl=#{curl},remark=#{remark}
+        where module_id=#{id}
+    </update>
+</mapper>
